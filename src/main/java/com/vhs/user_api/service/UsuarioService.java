@@ -5,11 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.vhs.user_api.entity.Endereco;
+import com.vhs.user_api.entity.Usuario;
 import com.vhs.user_api.repository.EnderecoRepository;
 import com.vhs.user_api.repository.UsuarioRepository;
-
-import br.com.vhs.user_api.entity.Endereco;
-import br.com.vhs.user_api.entity.Usuario;
 
 @Service
 public class UsuarioService {
@@ -54,6 +53,11 @@ public class UsuarioService {
         enderecoRepository.save(e);
 
         return usuarioRepository.save(usuario);
+    }
+    
+    public Usuario buscarPorId(Long id) {
+        return usuarioRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Usuário não encontrado com id: " + id)); // Retorna o usuário ou lança uma exceção se não encontrado
     }
 
     /** Deleta usuário (e opcionalmente o endereço) */

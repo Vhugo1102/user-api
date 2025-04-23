@@ -1,4 +1,4 @@
-package br.com.vhs.user_api.entity;
+package com.vhs.user_api.entity;
 
 import java.time.LocalDate;
 
